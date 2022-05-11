@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const mutatedData = MutatorManager.Mutate(req.body);
-    console.log("Sending " + mutatedData);
+    console.log("Sending " + JSON.stringify(mutatedData, null, 2));
     const response = await axios.post(process.env.CONTROLLER_URL, mutatedData);
     return response;
   } catch (err) {

@@ -1,5 +1,123 @@
+//Test empty
 POST http://localhost:5003/my_api/v1/controller
 content-type: application/json
 
 {
 }
+
+###
+//Test nested mutators
+POST http://localhost:5003/my_api/v1/controller
+content-type: application/json
+
+{
+    "mutate": [
+    { 
+        "type":"Add",
+        "params": {
+            "key": "someKey",
+            "value": {
+                "mutate": [{
+                    "type": "DateTime",
+                    "params": {
+                        "key": "nestedDateTime"
+                    }
+                }]
+            }
+        }
+    }]
+}
+
+###
+//Test array
+POST http://localhost:5003/my_api/v1/controller
+content-type: application/json
+
+{
+    "mutate": [
+    { 
+        "type":"Array",
+        "params": {
+            "key": "someKey",
+            "count":5,
+            "value": {
+                "mutate": [{
+                    "type": "DateTime",
+                    "params": {
+                        "key": "nestedDateTime"
+                    }
+                },
+                {
+                    "type": "Array",
+                    "params": {
+                        "key": "innerArray",
+                        "count": 3,
+                        "value": {
+                            "mutate": [{
+                                "type": "RandomInt",
+                                "params": {
+                                    "key": "intValue",
+                                    "floor": 0,
+                                    "range": 100
+                                }
+                            }]
+                        }
+                    }
+                }
+                ]
+            }
+        }
+    }]
+}
+
+###
+//Test all
+POST http://localhost:5003/my_api/v1/controller
+content-type: application/json
+
+{
+    "mutate": [
+    { 
+        "type":"Add",
+        "params": {
+            "key": "someKey",
+            "value": "someValue"
+        }
+    },
+    { 
+        "type":"DateTime",
+        "params": {
+            "key": "createdAt"
+        }
+    },
+    { 
+        "type":"RandomInt",
+        "params": {
+            "key": "randomInt",
+            "floor": 10,
+            "range": 10
+        }
+    },
+    { 
+        "type":"RandomFloat",
+        "params": {
+            "key": "randomFloat",
+            "floor": 15.5,
+            "range": 7.5
+        }
+    },
+    { 
+        "type":"RandomString",
+        "params": {
+            "key": "randomString",
+            "length": 10
+        }
+    },
+    { 
+        "type":"RandomBool",
+        "params": {
+            "key": "randomBool"
+        }
+    }]
+}
+

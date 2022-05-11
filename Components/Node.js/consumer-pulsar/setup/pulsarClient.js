@@ -21,7 +21,7 @@ function Connect(url, topicName, subName, subType) {
       listener: (msg, msgConsumer) => {
         console.log(msg.getData().toString());
         const obj = JSON.parse(msg.getData);
-        msgConsumer.acknowledge(obj);
+        msgConsumer.acknowledge(msg);
       },
     });
   })();

@@ -1,28 +1,107 @@
-const NullMutator = require("./nullMutator");
-const AddMutator = require("./addMutator");
-const DateTimeMutator = require("./dateTimeMutator");
-const RandomIntMutator = require("./randomIntMutator");
-const RandomFloatMutator = require("./randomFloatMutator");
-const RandomStringMutator = require("./randomStringMutator");
-const RandomBoolMutator = require("./randomBoolMutator");
-const ArrayMutator = require("./arrayMutator");
+var crypto = require("crypto");
+
+const Mutators = {
+  doNull() {
+    return {};
+  },
+  doAdd(inObject, key, value) {
+    inObject[key] = value;
+    return inObject;
+  },
+  doArray(inObject, key, value, count) {
+    inObject[key] = [];
+    for (let i = 0; i < count; i += 1) {
+      inObject[key].push(value);
+    }
+    return inObject;
+  },
+  doDateTime(inObject, key) {
+    inObject[key] = new Date().toISOString();
+    return inObject;
+  },
+  doRandomBool(inObject, key) {
+    inObject[key] = true;
+    if (Math.random() * 1 < 0.5) {
+      inObject[key] = false;
+    }
+    return inObject;
+  },
+  doRandomFloat(inObject, key, bottom, range) {
+    inObject[key] = Math.random() * range + bottom;
+    return inObject;
+  },
+  doRandomInt(inObject, key, bottom, range) {
+    inObject[key] = Math.floor(Math.random() * range) + bottom;
+    return inObject;
+  },
+  doRandomString(inObject, key, length) {
+    inObject[key] = crypto.randomBytes(length).toString("hex");
+    return inObject;
+  },
+  doMutate(inObject) {
+    console.log(JSON.stringify(inObject));
+
+    if (typeof inObject === "object" && inObject.hasOwnProperty("mutate")) {
+      let retObj = {};
+      for (const mutator of inObject["mutate"]) {
+        const type = mutator.type;
+        if (type == "Add") {
+          console.log("Doing add...");
+          const val = this.doMutate(mutator.params.value);
+          console.log("Val is " + JSON.stringify(val));
+          retObj = this.doAdd(retObj, mutator.params.key, val);
+        } else if (type == "DateTime") {
+          retObj = this.doDateTime(retObj, mutator.params.key);
+        } else if (type == "RandomInt") {
+          retObj = this.doRandomInt(
+            retObj,
+            mutator.params.key,
+            mutator.params.floor,
+            mutator.params.range
+          );
+        } else if (type == "RandomFloat") {
+          retObj = this.doRandomFloat(
+            retObj,
+            mutator.params.key,
+            mutator.params.floor,
+            mutator.params.range
+          );
+        } else if (type == "RandomString") {
+          retObj = this.doRandomString(
+            retObj,
+            mutator.params.key,
+            mutator.params.length
+          );
+        } else if (type == "RandomBool") {
+          retObj = this.doRandomBool(retObj, mutator.params.key);
+        } else if (type == "Array") {
+          retObj[mutator.params.key] = [];
+          for (let i = 0; i < mutator.params.count; i += 1) {
+            const val = this.doMutate(mutator.params.value);
+            retObj[mutator.params.key].push(val);
+          }
+        }
+      }
+      return retObj;
+    }
+    return inObject;
+  },
+};
 
 function Mutate(inObject) {
-  inObject = NullMutator.Mutate(inObject);
-  inObject = AddMutator.Mutate(inObject, "newKey", "newValue");
-  inObject = DateTimeMutator.Mutate(inObject, "createdAt");
-  inObject = AddMutator.Mutate(inObject, "item", {
+  inObject = Mutators.doMutate(inObject);
+  /*inObject = Mutators.doNull();
+  inObject = Mutators.doAdd(inObject, "newKey", "newValue");
+  inObject = Mutators.doDateTime(inObject, "createdAt");
+  inObject = Mutators.doAdd(inObject, "item", {
     name: "Toy",
     price: "50.00",
   });
-  inObject = RandomIntMutator.Mutate(inObject, "randomInt", 10, 10);
-  inObject = RandomFloatMutator.Mutate(inObject, "randomFloat", 15.5, 7.5);
-  inObject = RandomStringMutator.Mutate(inObject, "randomString", 20);
-  inObject = RandomBoolMutator.Mutate(inObject, "bool1");
-  inObject = RandomBoolMutator.Mutate(inObject, "bool2");
-  inObject = RandomBoolMutator.Mutate(inObject, "bool3");
-  inObject = RandomBoolMutator.Mutate(inObject, "bool4");
-  inObject = ArrayMutator.Mutate(
+  inObject = Mutators.doRandomInt(inObject, "randomInt", 10, 10);
+  inObject = Mutators.doRandomFloat(inObject, "randomFloat", 15.5, 7.5);
+  inObject = Mutators.doRandomString(inObject, "randomString", 20);
+  inObject = Mutators.doRandomBool(inObject, "bool1");
+  inObject = Mutators.doArray(
     inObject,
     "unit",
     {
@@ -30,7 +109,7 @@ function Mutate(inObject) {
       quantity: 3,
     },
     5
-  );
+  );*/
   return inObject;
 }
 
