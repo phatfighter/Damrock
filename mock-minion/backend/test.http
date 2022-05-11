@@ -1,0 +1,16 @@
+
+POST http://localhost:8080/tshirt/1 HTTP/1.1 
+content-type: application/json
+
+{
+    "logo": "Hello",
+    "tshirt": "name",
+    "size": "medium"
+}
+
+###
+
+
+GET http://localhost:8080/tshirt
+
+###

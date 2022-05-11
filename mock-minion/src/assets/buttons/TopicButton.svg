@@ -1,0 +1,62 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1080 1080"
+  >
+    <g>
+      <path
+        d="M100 300, A10, 50 0 1, 0 100 780"
+        stroke="#000"
+        stroke-width="40"
+        fill="none"
+      />
+      <path
+        d="M950 300, A10, 50 0 1, 0 950 780"
+        stroke="#000"
+        stroke-width="40"
+        fill="none"
+      />
+      <path
+        d="M950 300, A10, 50 0 1, 1 950 780"
+        stroke="#000"
+        stroke-width="40"
+        fill="none"
+      />
+      <line
+        x1="100"
+        y1="300"
+        x2="950"
+        y2="300"
+        stroke="#000"
+        stroke-width="40"
+      />
+      <line
+        x1="100"
+        y1="780"
+        x2="950"
+        y2="780"
+        stroke="#000"
+        stroke-width="40"
+      />
+      <text
+        font-size="280"
+        font-style="normal"
+        font-family="'Karla', sans-serif"
+        font-weight="400"
+        style="
+          stroke: none;
+          stroke-width: 1;
+          stroke-dasharray: none;
+          stroke-linecap: butt;
+          stroke-dashoffset: 0;
+          stroke-linejoin: miter;
+          stroke-miterlimit: 4;
+          fill: rgb(0, 0, 0);
+          fill-rule: nonzero;
+          opacity: 1;
+          white-space: pre;
+        "
+      >
+        <tspan x="170" y="650">Topic</tspan>
+      </text>
+    </g>
+  </svg>

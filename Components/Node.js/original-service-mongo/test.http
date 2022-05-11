@@ -1,0 +1,14 @@
+POST http://localhost:5000/templates
+content-type: application/json
+
+{
+    "entry": "Test2"
+}
+
+###
+
+DELETE http://localhost:5000/templates/6259e598da98467f2465b2a1
+content-type: application/json
+
+
+###

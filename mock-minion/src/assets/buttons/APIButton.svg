@@ -1,0 +1,59 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1080 1080">
+    <rect x="0" y="0" width="100%" height="100%" fill="transparent"></rect>
+    <g
+      transform="matrix(1 0 0 1 540 540)"
+      id="039aa1d7-496c-46c5-b434-519de385e43c"
+    ></g>
+    <g
+      transform="matrix(14.01 0 0 14.01 545.08 545.07)"
+      id="b321f84f-9fa9-42b4-a7a0-abf5b83ebd54"
+    >
+      <polygon
+        style="
+          stroke: rgb(0, 0, 0);
+          stroke-width: 2;
+          stroke-dasharray: none;
+          stroke-linecap: butt;
+          stroke-dashoffset: 0;
+          stroke-linejoin: miter;
+          stroke-miterlimit: 4;
+          fill: rgb(101, 101, 101);
+          fill-opacity: 0;
+          fill-rule: nonzero;
+          opacity: 1;
+        "
+        vector-effect="non-scaling-stroke"
+        points="-18.54,32.11 -37.08,0 -18.54,-32.11 18.54,-32.11 37.08,0 18.54,32.11 "
+      />
+    </g>
+    <g
+      transform="matrix(2.41 0 0 2.41 540 540)"
+      style=""
+      id="d72b54e5-97e5-4b16-b88a-7c443ca080f2"
+    >
+      <text
+      xml:space="preserve"
+        font-size="200"
+        font-style="normal"
+        font-family="'Karla', sans-serif"
+        font-weight="400"
+        style="
+          stroke: none;
+          stroke-width: 1;
+          stroke-dasharray: none;
+          stroke-linecap: butt;
+          stroke-dashoffset: 0;
+          stroke-linejoin: miter;
+          stroke-miterlimit: 4;
+          fill: rgb(0, 0, 0);
+          fill-rule: nonzero;
+          opacity: 1;
+          white-space: pre;
+        "
+      >
+        <tspan x="-160" y="62.83">API</tspan>
+      </text>
+    </g>
+  </svg>

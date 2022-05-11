@@ -1,0 +1,109 @@
+POST http://localhost:9000/functions
+content-type: application/json
+
+{
+    "userid": "abcdefghi",
+    "componentName": "My_DatabaseNode",
+    "component": "Database",
+    "type": "No-Sql",
+    "platform": "Node.js",
+    "provider": "MongoDB",
+    "version": "5.0.6",
+    "schemas": [
+        {
+            "name": "User",
+            "fields": [
+                {
+                    "name": "Name",
+                    "type": "String"
+                },
+                {
+                    "name": "Email",
+                    "type": "String"
+                },
+                {
+                    "name": "Id",
+                    "type": "String"
+                }
+            ]
+        }, 
+        {
+            "name": "Product",
+            "fields": [
+                {
+                    "name": "UserId",
+                    "type": "String"
+                },
+                {
+                    "name": "Name",
+                    "type": "String"
+                },
+                {
+                    "name": "Quantity",
+                    "type": "Number"
+                },
+                {
+                    "name": "PPU",
+                    "type": "Number"
+                }                
+            ]
+        }
+    ]
+}
+
+###
+
+POST http://localhost:9000/functions
+content-type: application/json
+
+{
+    "userid": "abcdefghi",
+    "componentName": "My_DatabaseJava",
+    "component": "Database",
+    "type": "No-Sql",
+    "platform": "Java",
+    "provider": "MongoDB",
+    "version": "11",
+    "schemas": [
+        {
+            "name": "User",
+            "fields": [
+                {
+                    "name": "Name",
+                    "type": "String"
+                },
+                {
+                    "name": "Email",
+                    "type": "String"
+                },
+                {
+                    "name": "UserId",
+                    "type": "String"
+                }
+            ]
+        }, 
+        {
+            "name": "Product",
+            "fields": [
+                {
+                    "name": "UserId",
+                    "type": "String"
+                },
+                {
+                    "name": "Name",
+                    "type": "String"
+                },
+                {
+                    "name": "Quantity",
+                    "type": "Number"
+                },
+                {
+                    "name": "PPU",
+                    "type": "Number"
+                }                
+            ]
+        }
+    ]
+}
+
+###

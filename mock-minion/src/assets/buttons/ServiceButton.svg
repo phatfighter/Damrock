@@ -1,0 +1,46 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1080 1080"
+  >
+    <g
+      transform="matrix(12.54 0 0 12.54 540 540)"
+      id="b6000b29-51c4-47a3-b715-639e66b192f9"
+    >
+      <path
+        stroke="#000"
+        stroke-width="1"
+        fill="none"
+        vector-effect="non-scaling-stroke"
+        transform=" translate(-50, -50)"
+        d="M 90.375 67.209 L 9.625 67.209 L 9.625 32.792 L 90.375 32.792 L 90.375 67.209 z M 11.625 65.209 L 88.375 65.209 L 88.375 34.792 L 11.625 34.792 L 11.625 65.209 z"
+      />
+    </g>
+    <g
+      transform="matrix(1 0 0 1 540 540)"
+      style=""
+      id="0811e8e8-ef09-44b7-8fc2-c842a3b9b244"
+    >
+      <text
+        font-size="250"
+        font-style="normal"
+        font-family="'Karla', sans-serif"
+        font-weight="400"
+        style="
+          stroke: none;
+          stroke-width: 1;
+          stroke-dasharray: none;
+          stroke-linecap: butt;
+          stroke-dashoffset: 0;
+          stroke-linejoin: miter;
+          stroke-miterlimit: 4;
+          fill: rgb(0, 0, 0);
+          fill-rule: nonzero;
+          opacity: 1;
+          white-space: pre;
+        "
+      >
+        <tspan x="-390" y="62.83">Service</tspan>
+      </text>
+    </g>
+  </svg>
+  
