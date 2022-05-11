@@ -8,13 +8,6 @@ const Mutators = {
     inObject[key] = value;
     return inObject;
   },
-  doArray(inObject, key, value, count) {
-    inObject[key] = [];
-    for (let i = 0; i < count; i += 1) {
-      inObject[key].push(value);
-    }
-    return inObject;
-  },
   doDateTime(inObject, key) {
     inObject[key] = new Date().toISOString();
     return inObject;
