@@ -13,15 +13,21 @@ function Connect(url, topicName, subName, subType) {
       operationTimeoutSeconds: 30,
     });
 
+    let counter = 0;
     // Create a consumer with listener
     connection.consumer = await connection.client.subscribe({
       topic: topicName,
       subscription: subName,
       subscriptionType: subType,
       listener: (msg, msgConsumer) => {
-        console.log(msg.getData().toString());
-        const obj = JSON.parse(msg.getData);
-        msgConsumer.acknowledge(msg);
+        counter += 1;
+        try {
+          console.log(`Received ${counter} messages`);
+          //console.log(msg.getData().toString());
+          msgConsumer.acknowledge(msg);
+        } catch (err) {
+          console.log(err);
+        }
       },
     });
   })();

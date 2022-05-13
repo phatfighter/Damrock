@@ -25,9 +25,9 @@ function handleShutdownGracefully() {
     await connection.producer.close();
     await connection.client.close();
 
-    console.info("Server closed.");
     process.exit(0); // if required
   });
+  console.info("Server closed.");
 }
 process.on("SIGINT", handleShutdownGracefully);
 process.on("SIGTERM", handleShutdownGracefully);

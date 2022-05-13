@@ -1,5 +1,5 @@
 require("dotenv").config();
-const MutatorManager = require("../mutators/mutatorManager");
+const MutatorManager = require("../../Common/mutator-manager/mutatorManager");
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
@@ -14,12 +14,11 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const mutatedData = MutatorManager.Mutate(req.body);
-    console.log("Sending " + JSON.stringify(mutatedData, null, 2));
-    const response = await axios.post(process.env.CONTROLLER_URL, mutatedData);
-    return response;
+    console.log("Sending " + JSON.stringify(req.body, null, 2));
+    await axios.post(process.env.CONTROLLER_URL, req.body);
+    return res.status(200);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.status(400).json({ message: err.message }).end();
   }
 });
 

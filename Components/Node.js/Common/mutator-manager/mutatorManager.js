@@ -1,4 +1,4 @@
-var crypto = require("crypto");
+require("crypto");
 
 const Mutators = {
   doNull() {
@@ -32,16 +32,12 @@ const Mutators = {
     return inObject;
   },
   doMutate(inObject) {
-    console.log(JSON.stringify(inObject));
-
     if (typeof inObject === "object" && inObject.hasOwnProperty("mutate")) {
       let retObj = {};
       for (const mutator of inObject["mutate"]) {
         const type = mutator.type;
         if (type == "Add") {
-          console.log("Doing add...");
           const val = this.doMutate(mutator.params.value);
-          console.log("Val is " + JSON.stringify(val));
           retObj = this.doAdd(retObj, mutator.params.key, val);
         } else if (type == "DateTime") {
           retObj = this.doDateTime(retObj, mutator.params.key);
@@ -82,28 +78,7 @@ const Mutators = {
 };
 
 function Mutate(inObject) {
-  inObject = Mutators.doMutate(inObject);
-  /*inObject = Mutators.doNull();
-  inObject = Mutators.doAdd(inObject, "newKey", "newValue");
-  inObject = Mutators.doDateTime(inObject, "createdAt");
-  inObject = Mutators.doAdd(inObject, "item", {
-    name: "Toy",
-    price: "50.00",
-  });
-  inObject = Mutators.doRandomInt(inObject, "randomInt", 10, 10);
-  inObject = Mutators.doRandomFloat(inObject, "randomFloat", 15.5, 7.5);
-  inObject = Mutators.doRandomString(inObject, "randomString", 20);
-  inObject = Mutators.doRandomBool(inObject, "bool1");
-  inObject = Mutators.doArray(
-    inObject,
-    "unit",
-    {
-      name: "Stuff",
-      quantity: 3,
-    },
-    5
-  );*/
-  return inObject;
+  return Mutators.doMutate(inObject);
 }
 
 module.exports = { Mutate };

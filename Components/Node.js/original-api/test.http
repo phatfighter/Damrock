@@ -85,6 +85,16 @@ content-type: application/json
         }
     },
     { 
+        "type":"Add",
+        "params": {
+            "key": "someComposite",
+            "value": {
+                "name1": "Name",
+                "bool1": true
+            }
+        }
+    },
+    { 
         "type":"DateTime",
         "params": {
             "key": "createdAt"

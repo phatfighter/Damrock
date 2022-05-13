@@ -1,0 +1,40 @@
+{
+  "mutate": [
+    {
+      "type": "Array",
+      "params": {
+        "key": "someKey",
+        "count": 5,
+        "value": {
+          "mutate": [
+            {
+              "type": "DateTime",
+              "params": {
+                "key": "nestedDateTime"
+              }
+            },
+            {
+              "type": "Array",
+              "params": {
+                "key": "innerArray",
+                "count": 3,
+                "value": {
+                  "mutate": [
+                    {
+                      "type": "RandomInt",
+                      "params": {
+                        "key": "intValue",
+                        "floor": 0,
+                        "range": 100
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
