@@ -22,6 +22,7 @@ router.post("/", async (req, res) => {
   try {
     const newTemplate = await template.save();
     res.status(201).json(newTemplate);
+    console.log(JSON.stringify(newTemplate, null, 2));
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

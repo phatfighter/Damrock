@@ -1,3 +1,5 @@
+require("dotenv").config();
+const axios = require("axios");
 const Pulsar = require("pulsar-client");
 
 const connection = {
@@ -24,7 +26,17 @@ function Connect(url, topicName, subName, subType) {
         try {
           console.log(`Received ${counter} messages`);
           //console.log(msg.getData().toString());
-          msgConsumer.acknowledge(msg);
+          (async () => {
+            const response = await axios.post(
+              process.env.API_URL,
+              JSON.parse(msg.getData())
+            );
+            if (response.status === 200) {
+              msgConsumer.acknowledge(msg);
+            } else {
+              msgConsumer.negativeAcknowledge(msg);
+            }
+          })();
         } catch (err) {
           console.log(err);
         }

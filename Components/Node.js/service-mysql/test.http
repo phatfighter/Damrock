@@ -1,0 +1,57 @@
+POST http://localhost:3000/api/users
+content-type: application/json
+
+{
+    "name": "Jane Smith",
+    "email": "jane.smith@gmail.com",
+    "subscribed": true
+}
+
+###
+
+POST http://localhost:3000/api/users
+content-type: application/json
+
+{
+    "name": "Joe Bloggs",
+    "email": "joe.blogg@gmail.com"
+}
+
+###
+
+POST http://localhost:3000/api/users
+content-type: application/json
+
+{
+    "name": "Matt Marks",
+    "email": "matt.marks@gmail.com",
+    "accounts": [{
+        "type": "Savings",
+        "number": "1234567890"
+    },
+    {
+        "type": "Cheque",
+        "number": "99999999"
+    }
+    ]
+}
+
+###
+
+POST http://localhost:3000/api/users
+content-type: application/json
+
+{
+    "name": "Joe Bloggs",
+    "email": "joe.bloggs@gmail.com",
+     "subscribed": true,
+    "accounts": [{
+        "type": "Savings",
+        "number": "1234567890"
+    },
+    {
+        "type": "Cheque",
+        "number": "99999999"
+    }
+    ]
+}
