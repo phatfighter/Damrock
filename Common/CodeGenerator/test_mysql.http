@@ -1,0 +1,47 @@
+POST http://localhost:9000/functions
+content-type: application/json
+
+{
+    "userid": "abcdefghi",
+    "componentName": "My_MySqlNode",
+    "component": "Database",
+    "type": "RDBMS",
+    "platform": "Node.js",
+    "provider": "MySql",
+    "version": "6.19.0",
+    "model": {
+        "name": "users",
+        "type": "object",
+        "fields": [
+            {
+                "name": "name",
+                "type": "String"
+            },
+            {
+                "name": "email",
+                "type": "String"
+            },
+            {
+                "name": "active",
+                "type": "Boolean"
+            },
+            {
+                "type": "model",
+                "model": {
+                    "name": "accounts",
+                    "type": "array",
+                    "fields": [
+                        {
+                            "name": "type",
+                            "type": "String"
+                        }, 
+                        {
+                            "name": "number",
+                            "type": "String"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

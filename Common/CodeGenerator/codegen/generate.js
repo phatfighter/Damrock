@@ -1,5 +1,6 @@
 const GenerateNodeMongo = require("./Node/generateNodeMongo");
 const GenerateJavaMongo = require("./Java/generateJavaMongo");
+const GenerateNodeMySql = require("./Node/generateNodeMySql");
 
 function Generate(request) {
   const platform = request.platform;
@@ -9,6 +10,8 @@ function Generate(request) {
     return GenerateNodeMongo(request);
   } else if (platform == "Java" && provider == "MongoDB") {
     return GenerateJavaMongo(request);
+  } else if (platform == "Node.js" && provider == "MySql") {
+    return GenerateNodeMySql(request);
   } else {
     console.log("Unrecognised platform and provider");
     return null;

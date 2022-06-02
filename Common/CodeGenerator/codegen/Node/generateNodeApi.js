@@ -49,7 +49,7 @@ function processSchema(targetDir, schema) {
   textString = fs.readFileSync(templateJs, "utf8");
   textString = textString
     .replace(new RegExp("\\[NAME\\]", "g"), schema.name)
-    .replace(new RegExp("\\[COLUMNS\\]", "g"), jsonList);
+    .replace("[COLUMNS]", jsonList);
 
   let resultFile = path.join(targetDir, "models/" + schema.name + ".js");
   fs.writeFileSync(resultFile, textString);
@@ -108,4 +108,4 @@ function GenerateNodeMongo(request) {
   console.log("Done");
 }
 
-module.exports = GenerateNodeMongo;
+module.exports = GenerateNodeMySql;

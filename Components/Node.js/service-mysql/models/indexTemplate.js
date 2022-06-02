@@ -14,8 +14,6 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.user = require("./user.js")(sequelize, Sequelize);
-db.account = require("./account.js")(sequelize, Sequelize);
-db.user.accounts = db.user.hasMany(db.account /*, { as: "accounts" }*/);
-db.account.user = db.account.belongsTo(db.user);
+[IMPORTS]
+[ASSOCIATIONS]
 module.exports = db;

@@ -16,6 +16,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.user = require("./user.js")(sequelize, Sequelize);
 db.account = require("./account.js")(sequelize, Sequelize);
-db.user.accounts = db.user.hasMany(db.account /*, { as: "accounts" }*/);
+db.user.accounts = db.user.hasMany(db.account);
 db.account.user = db.account.belongsTo(db.user);
 module.exports = db;

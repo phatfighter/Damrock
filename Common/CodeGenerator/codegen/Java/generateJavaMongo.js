@@ -23,15 +23,6 @@ function cloneTemplate(sourceDir, targetDir) {
   fse.copySync(sourceDir, targetDir);
 }
 
-function buildColumn(field) {
-  var fieldDetails = {};
-  fieldDetails.type = field.type;
-  fieldDetails.required = true;
-
-  var fieldObj = field.name + " : " + JSON.stringify(fieldDetails, null, 2);
-  return fieldObj;
-}
-
 function processModel(targetDir, schema) {
   console.log("Processing " + schema.name);
 

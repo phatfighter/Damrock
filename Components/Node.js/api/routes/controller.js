@@ -1,5 +1,4 @@
 require("dotenv").config();
-const MutatorManager = require("../../Common/mutator-manager/mutatorManager");
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
